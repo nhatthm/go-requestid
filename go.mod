@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/bool64/ctxd v1.2.1
 	github.com/google/uuid v1.6.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	go.opentelemetry.io/otel v1.24.0
 )
 
