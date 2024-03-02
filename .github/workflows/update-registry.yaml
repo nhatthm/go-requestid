@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: nhatthm/gh-actions/checkout@master
 
-      #- name: Notify registries
-      #  uses: nhatthm/gh-actions/notify-go-registries@master
-      #  with:
-      #    token: ${{ secrets.REGISTRY_TOKEN }}
+      - name: Notify registries
+        uses: nhatthm/gh-actions/notify-go-registries@master
+        with:
+          token: ${{ secrets.REGISTRY_TOKEN }}
