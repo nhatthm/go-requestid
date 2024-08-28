@@ -16,7 +16,7 @@ import (
 func TestHandlerMiddleware_NoRequestID(t *testing.T) {
 	t.Parallel()
 
-	h := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+	h := http.HandlerFunc(func(_ http.ResponseWriter, req *http.Request) {
 		actual := requestid.FromContext(req.Context())
 
 		assert.NotEmpty(t, actual)
@@ -39,7 +39,7 @@ func TestHandlerMiddleware_HasRequestID(t *testing.T) {
 
 	requestID := uuid.New().String()
 
-	h := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+	h := http.HandlerFunc(func(_ http.ResponseWriter, req *http.Request) {
 		actual := requestid.FromContext(req.Context())
 
 		assert.Equal(t, requestID, actual)
@@ -88,7 +88,7 @@ func TestRoundTripperMiddleware(t *testing.T) {
 
 			var actual string
 
-			srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+			srv := httptest.NewServer(http.HandlerFunc(func(_ http.ResponseWriter, req *http.Request) {
 				actual = req.Header.Get("x-request-id")
 			}))
 
