@@ -2,7 +2,7 @@ MODULE_NAME=requestid
 
 VENDOR_DIR = vendor
 
-GOLANGCI_LINT_VERSION ?= v1.61.0
+GOLANGCI_LINT_VERSION ?= v1.64.7
 
 GO ?= go
 GOLANGCI_LINT ?= $(shell go env GOPATH)/bin/golangci-lint-$(GOLANGCI_LINT_VERSION)
@@ -11,6 +11,14 @@ GOLANGCI_LINT ?= $(shell go env GOPATH)/bin/golangci-lint-$(GOLANGCI_LINT_VERSIO
 $(VENDOR_DIR):
 	@mkdir -p $(VENDOR_DIR)
 	@$(GO) mod vendor
+	@$(GO) mod tidy
+
+.PHONE: update
+update:
+	@$(GO) get -u ./...
+
+.PHONY: tidy
+tidy:
 	@$(GO) mod tidy
 
 .PHONY: lint

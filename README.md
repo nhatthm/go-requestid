@@ -11,7 +11,7 @@ A library to propagate Request ID across the context.
 
 ## Prerequisites
 
-- `Go >= 1.22`
+- `Go >= 1.23`
 
 ## Install
 
