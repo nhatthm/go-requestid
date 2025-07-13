@@ -21,6 +21,7 @@ linters:
     - testpackage
     - varnamelen
     - wrapcheck
+    - wsl
   settings:
     dupl:
       threshold: 100
